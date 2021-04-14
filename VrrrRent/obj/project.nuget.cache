@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7e76TRffjgTil0sfgADRyh8WLEF3wvo+l1wcnWcvNTh2/BLcI+08aPmsmc0csWBbgS4sAV6pNpCVPjc4r4XiCQ==",
+  "dgSpecHash": "NDWEdSwv7rmTwh101+xyJB5kaNnOlDaOHyIeXhgCB4bepceGzMUxhfLLcKO01cy1Tv6DOGUlkErIHirVkIgONA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\danut\\OneDrive\\Desktop\\VrrrRent\\VrrrRent.csproj",
+  "projectFilePath": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danut\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\danut\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

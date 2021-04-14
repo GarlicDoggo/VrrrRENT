@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danut\\OneDrive\\Desktop\\VrrrRent\\VrrrRent.csproj": {}
+    "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danut\\OneDrive\\Desktop\\VrrrRent\\VrrrRent.csproj": {
+    "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danut\\OneDrive\\Desktop\\VrrrRent\\VrrrRent.csproj",
+        "projectUniqueName": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
         "projectName": "VrrrRent",
-        "projectPath": "C:\\Users\\danut\\OneDrive\\Desktop\\VrrrRent\\VrrrRent.csproj",
+        "projectPath": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
         "packagesPath": "C:\\Users\\danut\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danut\\OneDrive\\Desktop\\VrrrRent\\obj\\",
+        "outputPath": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
