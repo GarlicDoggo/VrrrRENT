@@ -7149,23 +7149,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danut\\.nuget\\packages\\": {},
+    "C:\\Users\\mihai\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
+      "projectUniqueName": "E:\\Facultate\\Proiect\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
       "projectName": "VrrrRent",
-      "projectPath": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
-      "packagesPath": "C:\\Users\\danut\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danut\\OneDrive\\Desktop\\SEREPO\\VrrrRENT\\VrrrRent\\obj\\",
+      "projectPath": "E:\\Facultate\\Proiect\\VrrrRENT\\VrrrRent\\VrrrRent.csproj",
+      "packagesPath": "C:\\Users\\mihai\\.nuget\\packages\\",
+      "outputPath": "E:\\Facultate\\Proiect\\VrrrRENT\\VrrrRent\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\danut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mihai\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7229,7 +7229,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
