@@ -8,8 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VrrrRent.Data;
 using Microsoft.EntityFrameworkCore;
+using VrrrRent.Abstractions;
+using VrrrRent.Repositories;
+using VrrrRent.Services;
+using VrrrRent.Data;
 
 namespace VrrrRent
 {
@@ -28,6 +31,14 @@ namespace VrrrRent
             services.AddControllersWithViews();
             services.AddDbContext<VrrrRentContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("VrrrRentContext")));
+
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+            services.AddScoped<ClientService>();
+            services.AddScoped<DealershipService>();
+            services.AddScoped<InventoryService>();
+            services.AddScoped<PaymentService>();
+            services.AddScoped<RentalService>();
+            services.AddScoped<VehicleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +66,8 @@ namespace VrrrRent
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }

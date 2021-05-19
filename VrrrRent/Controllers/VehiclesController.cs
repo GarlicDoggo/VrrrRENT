@@ -7,22 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VrrrRent.Data;
 using VrrrRent.Models;
+using VrrrRent.Services;
 
 namespace VrrrRent.Controllers
 {
     public class VehiclesController : Controller
     {
-        private readonly VrrrRentContext _context;
+        private readonly VehicleService _vehicleService;
 
-        public VehiclesController(VrrrRentContext context)
+        public VehiclesController(VehicleService vehicleService)
         {
-            _context = context;
+            _vehicleService = vehicleService;
         }
 
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vehicle.ToListAsync());
+            var vehicles = _vehicleService.GetVehicles();
+            return View(vehicles);
         }
 
         // GET: Vehicles/Details/5
@@ -33,8 +35,7 @@ namespace VrrrRent.Controllers
                 return NotFound();
             }
 
-            var vehicle = await _context.Vehicle
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var vehicle = _vehicleService.GetVehicles().FirstOrDefault(m => m.ID == id);
             if (vehicle == null)
             {
                 return NotFound();
@@ -58,8 +59,8 @@ namespace VrrrRent.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vehicle);
-                await _context.SaveChangesAsync();
+                _vehicleService.AddVehicle(vehicle);
+                _vehicleService.Save();
                 return RedirectToAction(nameof(Index));
             }
             return View(vehicle);
@@ -73,7 +74,7 @@ namespace VrrrRent.Controllers
                 return NotFound();
             }
 
-            var vehicle = await _context.Vehicle.FindAsync(id);
+            var vehicle = _vehicleService.GetVehicles().FirstOrDefault(m => m.ID == id);
             if (vehicle == null)
             {
                 return NotFound();
@@ -97,8 +98,8 @@ namespace VrrrRent.Controllers
             {
                 try
                 {
-                    _context.Update(vehicle);
-                    await _context.SaveChangesAsync();
+                    _vehicleService.UpdateVehicle(vehicle);
+                    _vehicleService.Save();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +125,7 @@ namespace VrrrRent.Controllers
                 return NotFound();
             }
 
-            var vehicle = await _context.Vehicle
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var vehicle = _vehicleService.GetVehicles().FirstOrDefault(m => m.ID == id);  
             if (vehicle == null)
             {
                 return NotFound();
@@ -139,15 +139,15 @@ namespace VrrrRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var vehicle = await _context.Vehicle.FindAsync(id);
-            _context.Vehicle.Remove(vehicle);
-            await _context.SaveChangesAsync();
+            var vehicle = _vehicleService.GetVehiclesByCondition(m => m.ID==id).FirstOrDefault();
+            _vehicleService.DeleteVehicle(vehicle);
+            _vehicleService.Save();
             return RedirectToAction(nameof(Index));
         }
 
         private bool VehicleExists(int id)
         {
-            return _context.Vehicle.Any(e => e.ID == id);
+            return _vehicleService.GetVehicles().Any(e => e.ID == id);
         }
     }
 }
