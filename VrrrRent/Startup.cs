@@ -12,7 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using VrrrRent.Abstractions;
 using VrrrRent.Repositories;
 using VrrrRent.Services;
-using VrrrRent.Data;
+using VrrrRent.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace VrrrRent
 {
@@ -29,8 +30,9 @@ namespace VrrrRent
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<VrrrRentContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("VrrrRentContext")));
+            services.AddRazorPages();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<VrrrRentContext>();
 
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddScoped<ClientService>();
@@ -39,6 +41,20 @@ namespace VrrrRent
             services.AddScoped<PaymentService>();
             services.AddScoped<RentalService>();
             services.AddScoped<VehicleService>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=VrrrRentContext-1;Trusted_connection=True;ConnectRetryCount=0";
+            services.AddDbContext<VrrrRentContext>
+                (options => options.UseSqlServer(connection));
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +75,7 @@ namespace VrrrRent
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

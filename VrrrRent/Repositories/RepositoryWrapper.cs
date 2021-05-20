@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VrrrRent.Abstractions;
-using VrrrRent.Data;
+using VrrrRent.Models;
 
 namespace VrrrRent.Repositories
 {
@@ -17,6 +17,10 @@ namespace VrrrRent.Repositories
         private IInventoryRepository _inventoryRepository;
         private IPaymentRepository _paymentRepository;
 
+        public RepositoryWrapper(VrrrRentContext VrrrRentContext)
+        {
+            this._vrrrRentContext = VrrrRentContext;
+        }
         public IClientRepository ClientRepository
         {
             get

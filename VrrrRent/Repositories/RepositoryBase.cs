@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using VrrrRent.Abstractions;
-using VrrrRent.Data;
+using VrrrRent.Models;
 
 namespace VrrrRent.Repositories
 {
@@ -42,7 +42,6 @@ namespace VrrrRent.Repositories
         {
             this.VrrrRentContext.Set<T>().Remove(entity);
         }
-
 
     }
 }
