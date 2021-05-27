@@ -33,10 +33,19 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+<<<<<<< Updated upstream
                             @if(User.IsInRole("Administrator") || User.IsInRole("User"))
                             {
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Vehicles" asp-action="Index">Vehicles</a>
                             }
+=======
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Dealerships" asp-action="Index">Dealerships</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Vehicles" asp-action="Index">Vehicles</a>
+
+>>>>>>> Stashed changes
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
