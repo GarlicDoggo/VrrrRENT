@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using VrrrRent.Abstractions;
 
 namespace VrrrRent.Areas.Identity.Pages.Account
 {
@@ -17,6 +18,7 @@ namespace VrrrRent.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
+        private readonly IUnitOfWork _unit;
         //private readonly IEmailSender _emailSender;
 
         public RegisterModel(
@@ -39,6 +41,7 @@ namespace VrrrRent.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            public string ImagePath { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -54,6 +57,22 @@ namespace VrrrRent.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Username: ")]
+            public string Username { get; set; }
+
+            [Required]
+            [Display(Name = "First Name: ")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name: ")]
+            public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Phone Number: ")]
+            public string PhoneNumber { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
