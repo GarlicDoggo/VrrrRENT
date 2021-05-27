@@ -6,6 +6,7 @@ using VrrrRent.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace VrrrRent.Controllers
 {
@@ -19,9 +20,14 @@ namespace VrrrRent.Controllers
         }
 
         // GET: Vehicles
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
             var vehicles = _vehicleService.GetVehicles();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicles = _vehicleService.GetVehiclesByCondition(s => s.Brand.Contains(searchString)
+                                                                          || s.Model.Contains(searchString));
+            }
             return View(vehicles);
         }
 
