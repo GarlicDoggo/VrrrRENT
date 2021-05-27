@@ -14,6 +14,8 @@ namespace VrrrRent.Models
         public string Password { get; set; }
         public long Phone { get; set; }
         public bool BListStatus { get; set; }
+        public string ProfilePicture { get; set; }
         public ICollection<Rental> Rental { get; set; }
+
     }
 }
