@@ -1,62 +1,110 @@
 ﻿@model IEnumerable<VrrrRent.Models.Vehicle>
 
+
 @{
     ViewData["Title"] = "Collection of vehicles";
+
 }
 
 <h1>Collection of Vehicles</h1>
 
-<p>
-    <a asp-action="Create"><img src="~/img/create.png" style="width:5%;" class="rounded float-left" /></a>
-</p>
+
+
+@if (User.IsInRole("Administrator"))
+{<p>
+        <a asp-action="Create"><img src="~/img/create.png" style="width:5%;" class="rounded" /></a>
+    </p>
+}
+
+<form asp-controller="Vehicles" asp-action="Index" method="get">
+    <p>
+        Search:
+        <input type="text" name="searchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
+
+
                 @Html.DisplayNameFor(model => model.Model)
             </th>
             <th>
+
+
                 @Html.DisplayNameFor(model => model.Class)
             </th>
             <th>
+
+
                 @Html.DisplayNameFor(model => model.Year)
             </th>
             <th>
+
+
                 @Html.DisplayNameFor(model => model.Brand)
             </th>
             <th>
+
+
                 @Html.DisplayNameFor(model => model.Available)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Class)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Available)
-            </td>
-            @if (User.IsInRole("Administrator"))
-            {
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
-                <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/img/edit.png"  style="width:5%;"class="rounded float-left" /></a> <div></div>
-                <a asp-action="Details" asp-route-id="@item.ID"><img src="~/img/details.png" style="width:5%;" class="rounded float-left" /></a> <div></div>
-                <a asp-action="Delete" asp-route-id="@item.ID"><img src="~/img/delete.png" style="width:5%;" class="rounded float-left" /></a> <div></div>
+
+
+                    @Html.DisplayFor(modelItem => item.Model)
                 </td>
-            }
-        </tr>
-}
+                <td>
+
+
+                    @Html.DisplayFor(modelItem => item.Class)
+                </td>
+                <td>
+
+
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+
+
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+
+
+                    @Html.DisplayFor(modelItem => item.Available)
+                </td>
+
+
+                @if (User.IsInRole("Administrator"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/img/edit.png" style="width:5%;" class="rounded float-left" /></a> <div></div>
+                        <a asp-action="Details" asp-route-id="@item.ID"><img src="~/img/details.png" style="width:5%;" class="rounded float-left" /></a> <div></div>
+                        <a asp-action="Delete" asp-route-id="@item.ID"><img src="~/img/delete.png" style="width:5%;" class="rounded float-left" /></a> <div></div>
+                        @*<a asp-action="Rent" asp-route-id="@item.ID"><img src="~/img/rent.png" style="width:5%;" class="rounded float-left" /></a> <div></div>*@
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Rent" asp-action="Index"><img src="~/img/rent.png" style="width:5%;" class="rounded float-left" /></a>
+                    </td>
+                }
+                else
+                {
+            <td>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Rent" asp-action="Index"><img src="~/img/rent.png" style="width:20%;" class="rounded float-right " /></a>
+                <div></div>
+            </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>
