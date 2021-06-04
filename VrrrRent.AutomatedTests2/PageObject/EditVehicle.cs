@@ -19,9 +19,9 @@ namespace VrrrRent.AutomatedTests2.PageObject
         private IWebElement editButton;
 
         
-        public EditVehicle(IWebDriver webDriver)
+        public EditVehicle(IWebDriver driver)
         {
-            this.webDriver = webDriver;
+            webDriver = driver;
             PageFactory.InitElements(webDriver, this);
         }
 

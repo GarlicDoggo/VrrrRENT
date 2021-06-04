@@ -43,28 +43,6 @@ namespace VrrrRent.AutomatedTests2
 
         }
         [TestMethod]
-        public void TestDeleteVehicle()
-        {
-            AddVehicle C1 = new AddVehicle(webDriver);
-            Random randomNumber = new Random();
-            string modelName = "TestModel2 " + randomNumber.Next(100, 10000000);
-            DateTime time = DateTime.Today;
-            HomePage homePage = new HomePage(webDriver);
-            homePage.GoToPage();
-            LoginPage loginPage = homePage.GoToLoginPage();
-            loginPage.Login("admin1@gmail.com", "Admin_1234");
-
-            VehicleIndex indexPage = new VehicleIndex(webDriver);
-            indexPage.GoToPage();
-            AddVehicle addVehiclePage = indexPage.GoToAddVehiclePage();
-            C1.Save(modelName, "S", time, "Audi");
-
-            DeleteVehicle deleteStationPage = indexPage.GoToDeleteVehiclePage();
-            deleteStationPage.Delete();
-
-            Assert.IsTrue(indexPage.CheckIfVehicleIsPresent(modelName));
-
-        }
         public void TestEditVehicle()
         {
             AddVehicle C1 = new AddVehicle(webDriver);
@@ -79,7 +57,7 @@ namespace VrrrRent.AutomatedTests2
             VehicleIndex indexPage = new VehicleIndex(webDriver);
             indexPage.GoToPage();
             AddVehicle addVehiclePage = indexPage.GoToAddVehiclePage();
-            C1.Save(modelName, "S", time, "Audi");
+            addVehiclePage.Save(modelName, "S", time, "Audi");
             string modelNameEdit = "EditedModelName";
             EditVehicle editVehiclePage = indexPage.GoToEditVehiclePage();
             editVehiclePage.Edit(modelNameEdit);
@@ -87,6 +65,30 @@ namespace VrrrRent.AutomatedTests2
             Assert.IsTrue(indexPage.CheckIfVehicleIsPresent(modelName));
 
         }
+        [TestMethod]
+        public void TestDeleteVehicle()
+        {
+            AddVehicle C1 = new AddVehicle(webDriver);
+            Random randomNumber = new Random();
+            string modelName = "TestModel2 " + randomNumber.Next(100, 10000000);
+            DateTime time = DateTime.Today;
+            HomePage homePage = new HomePage(webDriver);
+            homePage.GoToPage();
+            LoginPage loginPage = homePage.GoToLoginPage();
+            loginPage.Login("admin1@gmail.com", "Admin_1234");
+
+            VehicleIndex indexPage = new VehicleIndex(webDriver);
+            indexPage.GoToPage();
+            AddVehicle addVehiclePage = indexPage.GoToAddVehiclePage();
+            addVehiclePage.Save(modelName, "S", time, "Audi");
+
+            DeleteVehicle deleteStationPage = indexPage.GoToDeleteVehiclePage();
+            deleteStationPage.Delete();
+
+            Assert.IsTrue(indexPage.CheckIfVehicleIsPresent(modelName));
+
+        }
+        
         [TestCleanup]
         public void Cleanup()
         {

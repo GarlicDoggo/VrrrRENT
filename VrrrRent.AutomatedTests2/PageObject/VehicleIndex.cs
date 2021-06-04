@@ -37,14 +37,12 @@ namespace VrrrRent.AutomatedTests2.PageObject
         public EditVehicle GoToEditVehiclePage()
         {
             var elements = vehiclesList.FindElements(By.TagName("tr"));
-            var nr = elements.Count();
             vehiclesList.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[1]/td[6]/a[1]")).Click();
             return new EditVehicle(webDriver);
         }
         public DeleteVehicle GoToDeleteVehiclePage()
         {
             var elements = vehiclesList.FindElements(By.TagName("tr"));
-            var nr = elements.Count();
             vehiclesList.FindElement(By.XPath("/html/body/div/main/table/tbody/tr[1]/td[6]/a[3]")).Click();
             return new DeleteVehicle(webDriver);
         }

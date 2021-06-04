@@ -14,9 +14,9 @@ namespace VrrrRent.AutomatedTests2.PageObject
 
         [FindsBy(How = How.XPath, Using = "/html/body/div/main/div/form/input[2]")]
         private IWebElement deleteButton;
-        public DeleteVehicle(IWebDriver webDriver)
+        public DeleteVehicle(IWebDriver driver)
         {
-            this.webDriver = webDriver;
+            webDriver = driver;
             PageFactory.InitElements(webDriver, this);
         }
 
