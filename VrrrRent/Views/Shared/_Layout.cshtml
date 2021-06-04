@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 @{
-    var message = TempData["AlertMessage"] ?? string.Empty;
+//var message = TempData["AlertMessage"] ?? string.Empty;
 }
 <body>
     <header>
@@ -61,10 +61,10 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         var message = '@message';
         if(message)
             alert(message);
-    </script>
+    </script>*@
 </body>
 </html>
